@@ -4,13 +4,27 @@ Sonarr / Radarr / Prowlarr / Bazarr / Transmission / Jellyfin
 
 Baixe programas de TV e filmes, classifique, com a qualidade e legendas desejadas, pronta para assistir, em um belo media player. Tudo automatizado.
 
-## Visão geral
+## Hardware utilizado
 
-Isso é o que eu configurei em casa para lidar com download, classificação e reprodução automatizados de programas de TV e filmes.
+TV Box HK1 X3 com a seguinte configuração:
+
+- CPU: Amlogic S905X3 64-bit quad-core ARM® Cortex™ A55 CPU
+- GPU: G31 MP2 GPU processor
+- RAM: DDR3 4GB
+- ROM: eMMC 128GB
+- Rede: GigabitEthernet RJ-45 / WiFi: 802.11 a/b/g/n 2.4G / 5G
+- SO: Armbian 22.05.0-trunk Focal (baseado no Ubuntu 20.04.4 LTS)
+- Docker versão 20.10.14, build a224086
+- docker-compose versão 1.25.0
+- Portainer 2.22.1
+
+## Visão geral do projeto
+
+Configuração realizada em casa para lidar com download, classificação e reprodução automatizada de séries de TV e filmes.
 
 _Isenção de responsabilidade: não estou incentivando/apoiando a pirataria, isso é apenas para fins informativos._
 
-Como funciona? Confio em várias ferramentas integradas. Eles são todos de código aberto e implantados como contêineres do Docker no meu servidor Linux.
+Como funciona? Confio em várias ferramentas integradas. Elas são todas de código aberto e implantadas como contêineres do Docker.
 
 O fluxo de trabalho comum é detalhado nesta primeira seção para dar uma ideia de como as coisas funcionam.
 
@@ -28,7 +42,7 @@ O Sonarr e o Radarr podem contar com duas maneiras diferentes de baixar arquivos
 
 ## Indexadores de torrents com Prowlarr
 
-Os arquivos torrents são pesquisados automaticamente pelo Sonarr/Radarr através de uma lista de indexadores que você deve configurar. Indexadores são APIs que permitem a busca de lançamentos específicos organizados por categorias. Pense em navegar no Pirate Bay programaticamente. É por isso que usaremos outra ferramenta chamada Prowlarr. É considerado como uma API de proxy local para os indexadores de torrent mais populares. Ele pesquisa e analisa informações de sites heterogêneos.
+Os arquivos torrents são pesquisados automaticamente pelo Sonarr/Radarr através de uma lista de indexadores que você deve configurar. Indexadores são APIs que permitem a busca de lançamentos específicos organizados por categorias. Pense em navegar no Pirate Bay programaticamente. É por isso que usaremos outra ferramenta chamada **[Prowlarr](https://github.com/Prowlarr/Prowlarr/)**. É considerado como uma API de proxy local para os indexadores de torrent mais populares. Ele pesquisa e analisa informações de sites heterogêneos.
 
 
 

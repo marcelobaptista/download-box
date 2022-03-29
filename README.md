@@ -44,5 +44,11 @@ O Sonarr e o Radarr podem contar com duas maneiras diferentes de baixar arquivos
 
 Os arquivos torrents são pesquisados automaticamente pelo Sonarr/Radarr através de uma lista de indexadores que você deve configurar. Indexadores são APIs que permitem a busca de lançamentos específicos organizados por categorias. Pense em navegar no Pirate Bay programaticamente. É por isso que usaremos outra ferramenta chamada **[Prowlarr](https://github.com/Prowlarr/Prowlarr/)**. É considerado como uma API de proxy local para os indexadores de torrent mais populares. Ele pesquisa e analisa informações de sites heterogêneos.
 
+## Legendas automáticas com Bazarr
+
+O **[Bazarr](https://www.bazarr.media/)** é usado para adicionar legendas nos episódios e filmes baixados, sem a necessidade de localizar e adicionar legendas de forma manual. Toda vez que um novo filme ou série é adicionada no Radarr ou no Sonarr, o Bazarr vai completar sua experiência adicionando a legenda no idioma escolhido.
+
+
+
 
 

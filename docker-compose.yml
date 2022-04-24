@@ -1,0 +1,138 @@
+version: "3.4"
+
+networks:
+  default:
+    external:
+      name: home-network
+
+services:
+
+  transmission:
+    container_name: transmission
+    hostname: transmission
+    image: lscr.io/linuxserver/transmission
+    restart: unless-stopped
+    environment:
+      - PUID=${PUID} 
+      - PGID=${PGID} 
+      - TZ=${TZ} 
+      - TRANSMISSION_WEB_HOME=/flood-for-transmission/
+    volumes:
+      - ${ROOT}/config/transmission:/config
+      - ${ROOT}/downloads:/downloads
+    ports:
+      - 9091:9091
+      - 51413:51413
+      - 51413:51413/udp
+    networks:
+      default:
+
+  prowlarr:
+    container_name: prowlarr
+    hostname: prowlarr
+    image: lscr.io/linuxserver/prowlarr:develop
+    restart: unless-stopped
+    environment:
+      - PUID=${PUID} 
+      - PGID=${PGID} 
+      - TZ=${TZ} 
+    volumes:
+      - ${ROOT}/config/prowlarr:/config     
+    ports:
+      - 9696:9696
+    networks:
+      default:
+
+  sonarr:
+    container_name: sonarr
+    hostname: sonarr
+    image: linuxserver/sonarr:latest
+    restart: unless-stopped
+    environment:
+      - PUID=${PUID} 
+      - PGID=${PGID} 
+      - TZ=${TZ} 
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ${ROOT}/config/sonarr:/config 
+      - ${ROOT}/media/TV:/TV
+      - ${ROOT}/downloads:/downloads 
+    ports:
+      - 8989:8989
+    networks:
+      default:
+
+  radarr:
+    container_name: radarr
+    hostname: radarr
+    image: linuxserver/radarr:latest
+    restart: unless-stopped
+    environment:
+      - PUID=${PUID} 
+      - PGID=${PGID} 
+      - TZ=${TZ} 
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ${ROOT}/config/radarr:/config 
+      - ${ROOT}/media/Filmes:/Filmes 
+      - ${ROOT}/downloads:/downloads 
+    ports:
+      - 7878:7878
+    networks:
+      default:
+
+  jellyfin:
+    container_name: jellyfin
+    hostname: jellyfin
+    image: lscr.io/linuxserver/jellyfin
+    restart: unless-stopped
+    environment:
+      - PUID=${PUID} 
+      - PGID=${PGID} 
+      - TZ=${TZ} 
+    volumes:
+      - ${ROOT}/config/jellyfin:/config
+      - ${ROOT}/media/TV:/data/TV
+      - ${ROOT}/media/Filmes:/data/Filmes
+    ports:
+      - 8096:8096
+    networks:
+      default:
+
+  bazarr:
+    container_name: bazarr
+    hostname: bazarr
+    image: linuxserver/bazarr
+    restart: unless-stopped
+    environment:
+      - PUID=${PUID} 
+      - PGID=${PGID} 
+      - TZ=${TZ} 
+     
+    volumes:
+      - ${ROOT}/config/bazarr:/config 
+      - ${ROOT}/media/Filmes:/Filmes 
+      - ${ROOT}/media/TV:/TV
+    ports:
+      - 6767:6767
+    networks:
+      default:
+
+  heimdall:
+    container_name: heimdall
+    hostname: heimdall
+    image: lscr.io/linuxserver/heimdall
+    restart: unless-stopped
+    environment:
+      - PUID=${PUID} 
+      - PGID=${PGID} 
+      - TZ=${TZ} 
+    volumes:
+      - ${ROOT}/config/hemdall:/config
+    ports:
+      - 80:80
+      - 443:443
+    networks:
+      default:
+
+

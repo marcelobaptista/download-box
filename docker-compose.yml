@@ -128,7 +128,7 @@ services:
       - PGID=${PGID} 
       - TZ=${TZ} 
     volumes:
-      - ${ROOT}/config/hemdall:/config
+      - ${ROOT}/config/heimdall:/config
     ports:
       - 80:80
       - 443:443

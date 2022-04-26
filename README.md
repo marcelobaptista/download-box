@@ -63,6 +63,10 @@ O **[Bazarr](https://www.bazarr.media/)** é usado para adicionar legendas nos e
 
 **[Heimdall](https://heimdall.site/)** é uma dashboard para todos os aplicativos do projeto. No entanto, pode adicionar links para o que quiser.
 
+## Portainer: administração dos containers
+
+**[Portainer](https://www.portainer.io/)** é uma interface web que interage com o socket do docker para criar novos contêineres e monitorá-los. Também pode ser utilizado para visualizar o cluster, gerenciar a autenticação de usuários e permissões de acesso ao cluster.
+
 # Como instalar o ambiente:
 
 - criar um ponto de montagem com a seguinte estrutura:
@@ -78,11 +82,7 @@ O **[Bazarr](https://www.bazarr.media/)** é usado para adicionar legendas nos e
 ```sh
 wget https://raw.githubusercontent.com/marcelobaptista/download-box/main/docker-compose.yml
 ``` 
-- criar a rede home-network:
-```sh
-docker network create -d bridge home-network
-```
-- executar os containers:
+- executar os contêineres:
 ```sh
 docker-compose -f docker-compose.yml up -d
 ```

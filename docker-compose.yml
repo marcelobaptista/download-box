@@ -1,9 +1,8 @@
 version: "3.4"
 
 networks:
-  default:
-    external:
-      name: home-network
+  home-network:
+    external: false
 
 services:
 
@@ -25,7 +24,7 @@ services:
       - 51413:51413
       - 51413:51413/udp
     networks:
-      default:
+      - home-network
 
   prowlarr:
     container_name: prowlarr
@@ -41,7 +40,7 @@ services:
     ports:
       - 9696:9696
     networks:
-      default:
+      - home-network
 
   sonarr:
     container_name: sonarr
@@ -60,7 +59,7 @@ services:
     ports:
       - 8989:8989
     networks:
-      default:
+      - home-network
 
   radarr:
     container_name: radarr
@@ -79,7 +78,7 @@ services:
     ports:
       - 7878:7878
     networks:
-      default:
+      - home-network
 
   jellyfin:
     container_name: jellyfin
@@ -97,7 +96,7 @@ services:
     ports:
       - 8096:8096
     networks:
-      default:
+      - home-network
 
   bazarr:
     container_name: bazarr
@@ -108,7 +107,6 @@ services:
       - PUID=${PUID} 
       - PGID=${PGID} 
       - TZ=${TZ} 
-     
     volumes:
       - ${ROOT}/config/bazarr:/config 
       - ${ROOT}/media/Filmes:/Filmes 
@@ -116,7 +114,7 @@ services:
     ports:
       - 6767:6767
     networks:
-      default:
+      - home-network
 
   heimdall:
     container_name: heimdall
@@ -133,6 +131,21 @@ services:
       - 80:80
       - 443:443
     networks:
-      default:
+      - home-network
 
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    hostname: portainer
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ${ROOT}/config/portainer:/data
+    ports:
+      - 9000:9000
+    networks:
+      - home-network
 

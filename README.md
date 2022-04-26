@@ -69,7 +69,13 @@ O **[Bazarr](https://www.bazarr.media/)** é usado para adicionar legendas nos e
 
 # Como instalar o ambiente:
 
-- criar um ponto de montagem com a seguinte estrutura:
+```sh
+mkdir /storage
+git clone https://github.com/marcelobaptista/download-box.git /storage
+cd /storage
+docker-compose -f docker-compose.yml up -d
+```
+Ao término teremos a seguinte estrutura no ponto de pontagem /storage:
 ```bash
 /storage
 ├── config
@@ -77,14 +83,6 @@ O **[Bazarr](https://www.bazarr.media/)** é usado para adicionar legendas nos e
 └── media
     ├── Filmes
     └── TV
-```
-- acessar o caminho /storage/config e efeturar o download do arquivo docker-compose.yml:
-```sh
-wget https://raw.githubusercontent.com/marcelobaptista/download-box/main/docker-compose.yml
-``` 
-- executar os contêineres:
-```sh
-docker-compose -f docker-compose.yml up -d
 ```
 # Como configurar o ambiente:
 
